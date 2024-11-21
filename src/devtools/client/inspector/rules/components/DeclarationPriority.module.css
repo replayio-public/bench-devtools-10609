@@ -1,0 +1,10 @@
+.declaration-priority {
+  display: inline-block;
+  margin-left: 4px;
+  padding: 1px 4px;
+  border-radius: 2px;
+  background-color: var(--theme-highlight-red);
+  color: var(--theme-selection-background);
+  font-weight: bold;
+  font-size: 0.9em;
+}

@@ -6,6 +6,7 @@ import { Priority } from "../models/text-property";
 import Color from "./value/Color";
 import FontFamily from "./value/FontFamily";
 import Url from "./value/Url";
+import DeclarationPriority from "./DeclarationPriority";
 
 interface DeclarationValueProps {
   colorSpanClassName: string;
@@ -52,7 +53,7 @@ class DeclarationValue extends React.PureComponent<DeclarationValueProps> {
     return (
       <>
         {values}
-        {this.props.priority ? ` !${this.props.priority}` : null}
+        <DeclarationPriority priority={this.props.priority} />
       </>
     );
   }
