@@ -116,6 +116,7 @@ function DeclarationStateRenderer({
     }
   }
 
+  title += declaration.priority ? ` !${declaration.priority}` : "";
   title += ";";
 
   return (
@@ -132,7 +133,9 @@ function DeclarationStateRenderer({
       </div>
       {": "}
       <div className={styles.DeclarationValue} data-highlight={isSearchValueMatch || undefined}>
-        {values};
+        {values}
+        {declaration.priority ? ` !${declaration.priority}` : ""}
+        ;
       </div>
     </div>
   );
