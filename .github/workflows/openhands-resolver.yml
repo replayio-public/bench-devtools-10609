@@ -161,6 +161,7 @@ jobs:
           LLM_API_KEY: ${{ secrets.LLM_API_KEY }}
           LLM_BASE_URL: ${{ secrets.LLM_BASE_URL }}
           PYTHONPATH: ""
+          DEBUG: "1"
         run: |
           cd /tmp && python -m openhands.resolver.resolve_issue \
             --repo ${{ github.repository }} \
