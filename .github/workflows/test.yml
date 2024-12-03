@@ -223,6 +223,8 @@ jobs:
 
   # notify openhands to try again if there's a failure with a retry limit
   notify-openhands:
+    permissions:
+      pull-requests: write
     needs: [e2etest, authenticated-e2etest, unit-test]
     runs-on: ubuntu-latest
     if: failure() && github.event_name == 'pull_request'
