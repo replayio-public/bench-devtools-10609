@@ -41,6 +41,16 @@ permissions:
 
 jobs:
 
+  debug-authorization:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Debug Authorization
+        if: github.event_name == 'issue_comment' || github.event_name == 'pull_request_review_comment'
+        run: |
+          echo "Event type: ${{ github.event_name }}"
+          echo "Comment starts with @openhands-agent: ${{ startsWith(github.event.comment.body, '@openhands-agent') }}"
+          echo "Author association: ${{ github.event.comment.author_association }}"
+
   auto-fix:
     if: |
       github.event_name == 'workflow_call' ||
