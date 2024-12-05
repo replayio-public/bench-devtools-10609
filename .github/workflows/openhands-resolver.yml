@@ -22,6 +22,8 @@ on:
         required: true
       PAT_USERNAME:
         required: true
+      RECORD_REPLAY_API_KEY:
+        required: true
 
   issues:
     types: [labeled]
@@ -170,6 +172,7 @@ jobs:
           LLM_MODEL: ${{ secrets.LLM_MODEL }}
           LLM_API_KEY: ${{ secrets.LLM_API_KEY }}
           LLM_BASE_URL: ${{ secrets.LLM_BASE_URL }}
+          REPLAY_API_KEY: ${{ secrets.RECORD_REPLAY_API_KEY }}
           PYTHONPATH: ""
           DEBUG: "1"
         run: |
