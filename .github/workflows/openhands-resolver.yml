@@ -42,17 +42,6 @@ permissions:
   issues: write
 
 jobs:
-
-  debug-authorization:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Debug Authorization
-        if: github.event_name == 'issue_comment' || github.event_name == 'pull_request_review_comment'
-        run: |
-          echo "Event type: ${{ github.event_name }}"
-          echo "Comment starts with @openhands-agent: ${{ startsWith(github.event.comment.body, '@openhands-agent') }}"
-          echo "Author association: ${{ github.event.comment.author_association }}"
-
   auto-fix:
     if: |
       github.event_name == 'workflow_call' ||
@@ -109,8 +98,9 @@ jobs:
           LLM_BASE_URL: ${{ secrets.LLM_BASE_URL }}
           PAT_TOKEN: ${{ secrets.PAT_TOKEN }}
           PAT_USERNAME: ${{ secrets.PAT_USERNAME }}
+          REPLAY_API_KEY: ${{ secrets.RECORD_REPLAY_API_KEY }}
         run: |
-          required_vars=("LLM_MODEL" "LLM_API_KEY" "PAT_TOKEN" "PAT_USERNAME")
+          required_vars=("LLM_MODEL" "LLM_API_KEY" "PAT_TOKEN" "PAT_USERNAME" "REPLAY_API_KEY")
           for var in "${required_vars[@]}"; do
             if [ -z "${!var}" ]; then
               echo "Error: Required environment variable $var is not set."
