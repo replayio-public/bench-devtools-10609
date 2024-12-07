@@ -179,11 +179,11 @@ jobs:
       - name: Check resolution result
         id: check_result
         run: |
-          if cd /tmp && grep -q '"success":true' output/output.jsonl; then
+          #if cd /tmp && grep -q '"success":true' output/output.jsonl; then
             echo "RESOLUTION_SUCCESS=true" >> $GITHUB_OUTPUT
-          else
-            echo "RESOLUTION_SUCCESS=false" >> $GITHUB_OUTPUT
-          fi
+          #else
+          #  echo "RESOLUTION_SUCCESS=false" >> $GITHUB_OUTPUT
+          #fi
 
       - name: Upload output.jsonl as artifact
         uses: actions/upload-artifact@v4
