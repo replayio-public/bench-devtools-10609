@@ -30,11 +30,16 @@ export default function MatchedSelector(props: MatchedSelectorProps) {
             // Reproduction step Repro:MatchedSelector:
             // the React element creation which triggered this render is at reproduction step Repro:ComputedProperty
             // selector has contents { value: "green", parsedValue: Object, selector: "div", stylesheet: "inline:5", stylesheetURL: "", overridden: false }, which is an object created at reproduction step Repro:index
+            // Reproduction step Repro:MatchedSelector:
+            // the React element creation which triggered this render is at reproduction step Repro:ComputedProperty
+            // selector has contents { value: "green", parsedValue: Object, selector: "div", stylesheet: "inline:5", stylesheetURL: "", overridden: false }, which is an object created at reproduction step Repro:index
             <DeclarationValue
               colorSpanClassName="computed-color"
               colorSwatchClassName="computed-colorswatch"
               fontFamilySpanClassName="computed-font-family"
-              values={selector.priority === "important" ? [...selector.parsedValue, " !important"] : selector.parsedValue}
+              values={selector.priority === "important" ? selector.parsedValue.map((val, i) => 
+                i === selector.parsedValue.length - 1 ? `${val} !important` : val
+              ) : selector.parsedValue}
             />
           </>
         </div>
