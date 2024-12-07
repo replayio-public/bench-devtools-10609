@@ -122,57 +122,6 @@ export async function createComputedProperties(
             // property has contents { textProp: Object, name: "color", value: "green", priority: "important", overridden: false }
             // combinedNameValue has contents "color:green"
             // parsedValue has contents Object
-            // Reproduction step Repro:index:
-            // outputParser has contents Object
-            // NO_RULES has contents Object
-            // NO_COMPUTEDS has contents Object
-            // properties has contents Object
-            // name has contents "color"
-            // value has contents "rgb(0, 128, 0)"
-            // inheritanceCounter has contents 1
-            // selectors has contents Object
-            // rule has contents Object
-            // selector has contents "div"
-            // stylesheet has contents "inline:5"
-            // stylesheetURL has contents ""
-            // declaration has contents Object
-            // property has contents { textProp: Object, name: "color", value: "green", priority: "important", overridden: false }
-            // combinedNameValue has contents "color:green"
-            // parsedValue has contents Object
-            // Reproduction step Repro:index:
-            // outputParser has contents Object
-            // NO_RULES has contents Object
-            // NO_COMPUTEDS has contents Object
-            // properties has contents Object
-            // name has contents "color"
-            // value has contents "rgb(0, 128, 0)"
-            // inheritanceCounter has contents 1
-            // selectors has contents Object
-            // rule has contents Object
-            // selector has contents "div"
-            // stylesheet has contents "inline:5"
-            // stylesheetURL has contents ""
-            // declaration has contents Object
-            // property has contents { textProp: Object, name: "color", value: "green", priority: "important", overridden: false }
-            // combinedNameValue has contents "color:green"
-            // parsedValue has contents Object
-            // Reproduction step Repro:index:
-            // outputParser has contents Object
-            // NO_RULES has contents Object
-            // NO_COMPUTEDS has contents Object
-            // properties has contents Object
-            // name has contents "color"
-            // value has contents "rgb(0, 128, 0)"
-            // inheritanceCounter has contents 1
-            // selectors has contents Object
-            // rule has contents Object
-            // selector has contents "div"
-            // stylesheet has contents "inline:5"
-            // stylesheetURL has contents ""
-            // declaration has contents Object
-            // property has contents { textProp: Object, name: "color", value: "green", priority: "important", overridden: false }
-            // combinedNameValue has contents "color:green"
-            // parsedValue has contents Object
             selectors.push({
               value: property.value,
               parsedValue,
