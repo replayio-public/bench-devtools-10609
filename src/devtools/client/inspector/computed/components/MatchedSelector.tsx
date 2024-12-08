@@ -26,9 +26,6 @@ export default function MatchedSelector(props: MatchedSelectorProps) {
       <span dir="ltr" className="rule-text theme-fg-color3">
         <div className="fix-get-selection">{selector.selector}</div>
         <div className="fix-get-selection computed-other-property-value theme-fg-color1">
-          // Reproduction step Repro:MatchedSelector:
-          // the React element creation which triggered this render is at reproduction step Repro:ComputedProperty
-          // selector has contents { value: "green", parsedValue: Object, selector: "div", stylesheet: "inline:5", stylesheetURL: "", overridden: false }, which is an object created at reproduction step Repro:index
           <>
             <DeclarationValue
               colorSpanClassName="computed-color"
