@@ -4,6 +4,8 @@ on:
   pull_request:
 env:
   RECORD_REPLAY_API_KEY: rwk_yaEG8jo6gcisGHHoMj8SNoOMIHSbT7REuU5E1QnKCiL
+permissions:
+  issues: write
 
 jobs:
   preview-branch:
