@@ -32,6 +32,7 @@ export default function MatchedSelector(props: MatchedSelectorProps) {
             fontFamilySpanClassName="computed-font-family"
             values={selector.parsedValue}
           />
+          {selector.important && <span className="theme-fg-color3"> !important</span>}
         </div>
       </span>
     </div>
