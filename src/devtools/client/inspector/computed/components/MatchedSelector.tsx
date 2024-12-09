@@ -3,6 +3,7 @@ import React from "react";
 import ExternalLink from "replay-next/components/ExternalLink";
 
 import DeclarationValue from "../../rules/components/DeclarationValue";
+import styles from "./MatchedSelector.module.css";
 import { MatchedSelectorState } from "../state";
 
 interface MatchedSelectorProps {
@@ -32,6 +33,7 @@ export default function MatchedSelector(props: MatchedSelectorProps) {
             fontFamilySpanClassName="computed-font-family"
             values={selector.parsedValue}
           />
+          {selector.important && <span className={styles["computed-important"]}>!important</span>}
         </div>
       </span>
     </div>
