@@ -112,6 +112,7 @@ export async function createComputedProperties(
               stylesheet,
               stylesheetURL,
               overridden: !!property.overridden,
+              isImportant: property.priority === "important",
             });
           }
         }
