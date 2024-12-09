@@ -22,7 +22,7 @@
   color: var(--color-default);
 }
 .Node[data-selected] {
-  background-color: var(--primary-accent-dimmed);
+  background-color: var(--primary-accent-dimmed) !important;
 }
 .Node[data-selected],
 .Node[data-selected] .HtmlAttributeName,
@@ -32,7 +32,8 @@
 .Node[data-selected] .HTMLTag,
 .Node[data-selected] .Separator,
 .Node[data-selected] .Icon {
-  fill: var(--theme-selection-color);
+  fill: var(--theme-selection-color) !important;
+  color: var(--theme-selection-color) !important;
 }
 .Node[data-loading] {
   opacity: 0.5;
