@@ -132,7 +132,8 @@ function DeclarationStateRenderer({
       </div>
       {": "}
       <div className={styles.DeclarationValue} data-highlight={isSearchValueMatch || undefined}>
-        {values};
+        {values}
+        {declaration.priority === "important" && " !important"};
       </div>
     </div>
   );
