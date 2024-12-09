@@ -187,7 +187,7 @@ export default class TextProperty {
         textProp: this,
         name: prop,
         value: dummyStyle.getPropertyValue(prop),
-        priority: dummyStyle.getPropertyPriority(prop) as Priority,
+        priority: this.priority || dummyStyle.getPropertyPriority(prop) as Priority,
       });
     }
   }
