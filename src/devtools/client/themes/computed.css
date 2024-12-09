@@ -244,3 +244,9 @@
 .computed-overridden .computed-other-property-value {
   text-decoration: line-through solid var(--theme-text-color-alt);
 }
+
+.computed-important {
+  margin-inline-start: 5px;
+  color: var(--theme-highlight-red);
+  font-weight: bold;
+}
