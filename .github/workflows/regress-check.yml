@@ -113,7 +113,7 @@ jobs:
           cd /tmp && python -m openhands.resolver.resolve_issue \
             --repo ${{ github.repository }} \
             --issue-number ${{ env.ISSUE_NUMBER }} \
-            --issue-type Issue \
+            --issue-type issue \
             --max-iterations ${{ env.MAX_ITERATIONS }} \
             --runtime-container-image="ghcr.io/replayio-public/runtime:${{ steps.get-sha.outputs.SHA }}-nikolaik"
 
