@@ -19,37 +19,6 @@ on:
         required: false
         type: string
         default: "@openhands-agent"
-  workflow_call:
-    inputs:
-      openhands_sha:
-        required: false
-        type: string
-        default: ""
-      issue_number:
-        required: false
-        type: number
-        default: 32
-      max_iterations:
-        required: false
-        type: number
-        default: 50
-      macro:
-        required: false
-        type: string
-        default: "@openhands-agent"
-    secrets:
-      LLM_MODEL:
-        required: true
-      LLM_API_KEY:
-        required: true
-      LLM_BASE_URL:
-        required: false
-      PAT_TOKEN:
-        required: true
-      PAT_USERNAME:
-        required: true
-      RECORD_REPLAY_API_KEY:
-        required: true
 
 permissions:
   contents: write
@@ -117,9 +86,7 @@ jobs:
 
       - name: Set environment variables
         run: |
-          echo "ISSUE_NUMBER=${{ github.event.issue.number }}" >> $GITHUB_ENV
-          echo "ISSUE_TYPE=issue" >> $GITHUB_ENV
-          echo "COMMENT_ID=${{ github.event.comment.id || 'None' }}" >> $GITHUB_ENV
+          echo "ISSUE_NUMBER=${{ inputs.issue_number }}" >> $GITHUB_ENV
           echo "MAX_ITERATIONS=${{ inputs.max_iterations || 50 }}" >> $GITHUB_ENV
           echo "SANDBOX_ENV_GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }}" >> $GITHUB_ENV
 
@@ -146,9 +113,8 @@ jobs:
           cd /tmp && python -m openhands.resolver.resolve_issue \
             --repo ${{ github.repository }} \
             --issue-number ${{ env.ISSUE_NUMBER }} \
-            --issue-type ${{ env.ISSUE_TYPE }} \
+            --issue-type Issue \
             --max-iterations ${{ env.MAX_ITERATIONS }} \
-            --comment-id ${{ env.COMMENT_ID }} \
             --runtime-container-image="ghcr.io/replayio-public/runtime:${{ steps.get-sha.outputs.SHA }}-nikolaik"
 
       - name: Upload output.jsonl as artifact
