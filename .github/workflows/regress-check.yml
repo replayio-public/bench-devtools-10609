@@ -99,6 +99,13 @@ jobs:
             python -m pip install --upgrade -r requirements.txt
           fi
 
+      - name: Ensure runtime container image is available
+        uses: replayio/action-wait-for-ghcr-image@latest
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          github-username: ${{ secrets.PAT_USERNAME }}
+          image-name: replayio-public/runtime:${{ github.sha }}-nikolaik
+
       - name: Attempt to resolve issue
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
