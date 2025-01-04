@@ -74,6 +74,14 @@
   line-height: 16px;
 }
 
+.user-options .dropdown-wrapper button.row:hover {
+  color: var(--primary-accent);
+}
+
+.user-options .dropdown-wrapper button.row:hover .bg-iconColor {
+  background-color: var(--primary-accent);
+}
+
 .dropdown-container .content {
   top: 48px;
   animation: linearFadeIn ease 200ms;
