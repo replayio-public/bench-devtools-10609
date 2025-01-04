@@ -75,13 +75,13 @@ jobs:
         id: get-sha
         run: |
           LATEST_SHA=$(curl -s -H "Accept: application/vnd.github.v3+json" \
-            https://api.github.com/repos/replayio-public/OpenHands/branches/main \
+            https://api.github.com/repos/replayio/OpenHands/branches/main \
             | jq -r .commit.sha)
           echo "SHA=$LATEST_SHA" >> $GITHUB_OUTPUT
 
       - name: Add a pinned dep to requirements.txt
         run: |
-          echo "openhands-ai @ git+https://github.com/replayio-public/OpenHands@${{ steps.get-sha.outputs.SHA }}" >> requirements.txt
+          echo "openhands-ai @ git+https://github.com/replayio/OpenHands@${{ steps.get-sha.outputs.SHA }}" >> requirements.txt
           cat requirements.txt
 
       - name: Cache pip dependencies
@@ -145,14 +145,14 @@ jobs:
               issue_number: ${{ env.ISSUE_NUMBER }},
               owner: context.repo.owner,
               repo: context.repo.repo,
-              body: `[OpenHands](https://github.com/replayio-public/OpenHands) started fixing the ${issueType}! You can monitor the progress [here](https://github.com/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}).`
+              body: `[OpenHands](https://github.com/replayio/OpenHands) started fixing the ${issueType}! You can monitor the progress [here](https://github.com/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}).`
             });
 
       - name: Install OpenHands
         run: |
           if [ "${{ github.event.label.name }}" == "fix-me-experimental" ]; then
             python -m pip install --upgrade pip
-            pip install git+https://github.com/replayio-public/openhands.git
+            pip install git+https://github.com/replayio/openhands.git
           else
             python -m pip install --upgrade -r requirements.txt
           fi
@@ -174,7 +174,7 @@ jobs:
             --issue-type ${{ env.ISSUE_TYPE }} \
             --max-iterations ${{ env.MAX_ITERATIONS }} \
             --comment-id ${{ env.COMMENT_ID }} \
-            --runtime-container-image="ghcr.io/replayio-public/runtime:${{ steps.get-sha.outputs.SHA }}-nikolaik"
+            --runtime-container-image="ghcr.io/replayio/runtime:${{ steps.get-sha.outputs.SHA }}-nikolaik"
 
       - name: Check resolution result
         id: check_result
