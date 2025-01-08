@@ -124,4 +124,50 @@ export class RuleFront {
     // NYI
     return undefined;
   }
+
+  /**
+   * Calculate the specificity of a selector.
+   * Returns an array of three numbers representing [id, class, type] counts.
+   * For example: "#foo.bar p" returns [1, 1, 1]
+   */
+  private calculateSelectorSpecificity(selector: string): [number, number, number] {
+    let idCount = 0;
+    let classCount = 0;
+    let typeCount = 0;
+
+    selector = selector.replace(/'[^']*'/g, '').replace(/"[^"]*"/g, '');
+
+    idCount = (selector.match(/#[a-z0-9_-]+/gi) || []).length;
+
+    classCount = (selector.match(/\.[a-z0-9_-]+|\[.+?\]|:[a-z0-9_-]+/gi) || []).length;
+    classCount -= (selector.match(/::[a-z0-9_-]+/gi) || []).length;
+    classCount -= (selector.match(/:not\([^)]*\)/gi) || []).length;
+
+    typeCount = (selector.match(/[a-z0-9]+|::[a-z0-9_-]+/gi) || []).length;
+
+    return [idCount, classCount, typeCount];
+  }
+
+  /**
+   * Get the specificity of the rule's selectors.
+   * Returns an array of specificities for each selector in the rule.
+   */
+  get specificity(): [number, number, number][] {
+    return this.selectors.map(selector => this.calculateSelectorSpecificity(selector));
+  }
+
+  /**
+   * Get the highest specificity among all selectors in the rule.
+   */
+  get highestSpecificity(): [number, number, number] {
+    const specificities = this.specificity;
+    return specificities.reduce((highest, current) => {
+      if (current[0] > highest[0] || 
+          (current[0] === highest[0] && current[1] > highest[1]) ||
+          (current[0] === highest[0] && current[1] === highest[1] && current[2] > highest[2])) {
+        return current;
+      }
+      return highest;
+    }, [0, 0, 0] as [number, number, number]);
+  }
 }

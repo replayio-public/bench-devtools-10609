@@ -43,6 +43,15 @@
 }
 .SelectorText {
   flex: 0 1 auto;
+  display: flex;
+  align-items: center;
+  gap: 0.5ch;
+}
+
+.Specificity {
+  color: var(--color-dim);
+  font-size: 0.9em;
+  user-select: none;
 }
 .SourceLink {
   flex: 1 1 auto;

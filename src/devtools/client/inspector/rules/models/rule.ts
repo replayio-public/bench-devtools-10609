@@ -152,6 +152,7 @@ export default class RuleModel {
       matchedSelectors: this.matchedSelectors,
       selectors: this.domRule.selectors,
       selectorText: /* this.keyframes ? this.domRule.keyText : */ this.selectorText,
+      specificity: this.domRule.isRule() ? this.domRule.highestSpecificity : [0, 0, 0],
     };
   }
 
