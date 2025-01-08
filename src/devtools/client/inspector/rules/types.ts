@@ -123,6 +123,7 @@ export const selector = {
   selectorText: PropTypes.string,
   // Array of the CSS rule's selectors.
   selectors: PropTypes.arrayOf(PropTypes.string),
+  specificity: PropTypes.arrayOf(PropTypes.number),
 };
 
 export type Selector = {
@@ -134,6 +135,7 @@ export type Selector = {
   selectorText: string;
   // Array of the CSS rule's selectors.
   selectors: string[];
+  specificity: [number, number, number];
 };
 
 /**
