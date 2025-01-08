@@ -32,6 +32,7 @@ export interface RuleSelector {
   matchedSelectors: string[] | undefined;
   selectors: string[] | undefined;
   selectorText: string;
+  specificity?: string;
 }
 
 export interface SourceLink {
@@ -152,6 +153,7 @@ export default class RuleModel {
       matchedSelectors: this.matchedSelectors,
       selectors: this.domRule.selectors,
       selectorText: /* this.keyframes ? this.domRule.keyText : */ this.selectorText,
+      specificity: this.domRule.specificity,
     };
   }
 

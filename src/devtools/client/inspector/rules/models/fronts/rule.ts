@@ -124,4 +124,8 @@ export class RuleFront {
     // NYI
     return undefined;
   }
+
+  get specificity() {
+    return this._rule.specificity;
+  }
 }
