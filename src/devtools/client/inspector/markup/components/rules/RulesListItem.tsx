@@ -218,6 +218,12 @@ function RuleStateHeaderRenderer({
         data-test-name="RuleListItem-RuleState-Selector"
       >
         {rule.selector.selectorText}
+        {rule.selector.specificity && (
+          <span className={styles.Specificity} title="Selector specificity">
+            {" "}
+            [{rule.selector.specificity}]
+          </span>
+        )}
       </div>
       {" {"}
       <div className={styles.SourceLink} data-test-name="RuleListItem-RuleState-Source">
